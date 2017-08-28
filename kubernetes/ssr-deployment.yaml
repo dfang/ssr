@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: ssr
+    app: ssr
+  name: ssr
+spec:
+  replicas: 3
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: ssr
+    spec:
+      containers:
+      - env:
+        - name: METHOD
+          value: aes-256-cfb
+        - name: OBFS
+          value: tls1.2_ticket_auth
+        - name: PASSWORD
+          value: gcssr123./
+        - name: PROTOCOL
+          value: auth_sha1_v4
+        - name: SERVER_ADDR
+          value: 0.0.0.0
+        - name: SERVER_PORT
+          value: "8388"
+        image: breakwa11/shadowsocksr
+        name: ssr
+        ports:
+        - containerPort: 8388
+        resources: {}
+      restartPolicy: Always
+status: {}

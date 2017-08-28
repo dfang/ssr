@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ssr
+    io.kompose.service: ssr
+  name: ssr
+  namespace: default
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - port: 8388
+    protocol: TCP
+    targetPort: 8388
+  selector:
+    io.kompose.service: ssr
+  type: LoadBalancer
+status:
+  loadBalancer: {}

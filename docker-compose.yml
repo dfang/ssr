@@ -1,0 +1,17 @@
+# docker run -d -p 8388:8388/tcp -p 8388:8388/udp -e SERVER_ADDR=0.0.0.0 -e SERVER_PORT=8388 -e PASSWORD=gcssr123./ -e METHOD=aes-256-cfb  -e OBFS=tls1.2_ticket_auth -e PROTOCOL=auth_sha1_v4  --name ssr breakwa11/shadowsocksr
+
+version: '2'
+services:
+  ssr:
+    image: breakwa11/shadowsocksr
+    container_name: ssr
+    environment:
+      - SERVER_ADDR=0.0.0.0
+      - SERVER_PORT=8388
+      - PASSWORD=gcssr123./
+      - METHOD=aes-256-cfb
+      - OBFS=tls1.2_ticket_auth
+      - PROTOCOL=auth_sha1_v4
+    ports:
+      - "8388:8388"
+
